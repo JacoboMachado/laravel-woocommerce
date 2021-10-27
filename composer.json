@@ -1,5 +1,5 @@
 {
-    "name": "codexshaper/laravel-woocommerce",
+    "name": "jacobomachado/laravel-woocommerce",
     "description": "WooCommerce Rest API for Laravel",
     "keywords": [
         "woocommerce",
@@ -52,6 +52,7 @@
                 "ShippingMethod": "Codexshaper\\WooCommerce\\Models\\ShippingMethod",
                 "ShippingZone": "Codexshaper\\WooCommerce\\Models\\ShippingZone",
                 "ShippingZoneMethod": "Codexshaper\\WooCommerce\\Models\\ShippingZoneMethod",
+                "Sites": "Codexshaper\\WooCommerce\\Models\\Sites",
                 "System": "Codexshaper\\WooCommerce\\Models\\System",
                 "Tag": "Codexshaper\\WooCommerce\\Models\\Tag",
                 "Tax": "Codexshaper\\WooCommerce\\Models\\Tax",
