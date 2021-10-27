@@ -3,6 +3,7 @@
 namespace Codexshaper\WooCommerce;
 
 use Automattic\WooCommerce\Client;
+use Codexshaper\WooCommerce\Models\Sites;
 use Codexshaper\WooCommerce\Traits\WooCommerceTrait;
 
 class WooCommerceApi
@@ -20,11 +21,16 @@ class WooCommerceApi
     protected $headers = [];
 
     /**
+     * @var Models\Sites
+     */
+    protected $site;
+
+    /**
      * Build Woocommerce connection.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Site $site)
     {
         try {
             $this->headers = [
@@ -32,10 +38,11 @@ class WooCommerceApi
                 'header_total_pages' => config('woocommerce.header_total_pages') ?? 'X-WP-TotalPages',
             ];
 
+
             $this->client = new Client(
-                config('woocommerce.store_url'),
-                config('woocommerce.consumer_key'),
-                config('woocommerce.consumer_secret'),
+                $site->url ?? config('woocommerce.store_url'),
+                $site->key ?? config('woocommerce.consumer_key'),
+                $site->secret ?? config('woocommerce.consumer_secret'),
                 [
                     'version'           => 'wc/'.config('woocommerce.api_version'),
                     'wp_api'            => config('woocommerce.wp_api_integration'),

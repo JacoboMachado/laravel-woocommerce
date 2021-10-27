@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSitesTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('sites', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->string('url')->unique();
+            $table->string('key');
+            $table->string('secret');
+
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('sites');
+    }
+}

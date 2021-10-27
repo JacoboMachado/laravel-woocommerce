@@ -16,6 +16,14 @@ class WooCommerceServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/woocommerce.php' => config_path('woocommerce.php'),
         ], 'woocommerce');
+
+        if (! class_exists('CreateSitesTable')) {
+            $timestamp = date('Y_m_d_His', time());
+
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_sites_table.php.stub' => database_path("migrations/{$timestamp}_create_sites_table.php"),
+            ], 'migrations');
+        }
     }
 
     /**
