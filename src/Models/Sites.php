@@ -14,9 +14,9 @@ class Sites extends Model
     {
         
         return static::query()->create([
-            'url' => $request->url,
-            'key' => encrypt($request->key),
-            'secret' => encrypt($request->secret)
+            'url' => $request['url'],
+            'key' => encrypt($request['key']),
+            'secret' => encrypt($request['secret'])
         ]);
     }
 
