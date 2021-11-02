@@ -4,6 +4,7 @@ namespace Codexshaper\WooCommerce\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use \Sagalbot\Encryptable\Encryptable;
 
 
 class Sites extends Model
@@ -12,6 +13,7 @@ class Sites extends Model
 
     protected $fillable = ['url', 'key', 'secret'];
 
+    protected $encryptable = [ 'key', 'secret' ];
 
     public static function create(array $request)
     {

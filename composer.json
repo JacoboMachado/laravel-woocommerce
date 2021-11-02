@@ -12,7 +12,8 @@
     ],
     "type": "library",
     "require": {
-        "automattic/woocommerce": "^3.0"
+        "automattic/woocommerce": "^3.0",
+        "sagalbot/encryptable": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0|^8.0|^9.3",
