@@ -4,14 +4,13 @@ namespace Codexshaper\WooCommerce\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 
 class Sites extends Model
 {
     public $timestamps = false;
 
-    public static function create(Request $request)
+    public static function create(array $request)
     {
         
         return static::query()->create([
