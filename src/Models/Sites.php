@@ -10,6 +10,9 @@ class Sites extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['url', 'key', 'secret'];
+
+
     public static function create(array $request)
     {
         
