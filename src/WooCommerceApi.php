@@ -41,9 +41,9 @@ class WooCommerceApi
 
 
             $this->client = new Client(
-                $site->url ?? config('woocommerce.store_url'),
-                $site->key ?? config('woocommerce.consumer_key'),
-                $site->secret ?? config('woocommerce.consumer_secret'),
+                $site->url,
+                $site->key,
+                $site->secret,
                 [
                     'version'           => 'wc/'.config('woocommerce.api_version'),
                     'wp_api'            => config('woocommerce.wp_api_integration'),
