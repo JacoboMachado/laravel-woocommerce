@@ -30,8 +30,9 @@ class WooCommerceApi
      *
      * @return void
      */
-    public function __construct(Site $site)
+    public function __construct(Sites $site)
     {
+        $this->site = $site;
         try {
             $this->headers = [
                 'header_total'       => config('woocommerce.header_total') ?? 'X-WP-Total',

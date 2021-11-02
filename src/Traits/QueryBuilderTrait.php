@@ -44,14 +44,14 @@ trait QueryBuilderTrait
      *
      * @return array
      */
-    protected function all($options = [])
+    protected function all($site, $options = [])
     {
         if ($this->isLazyCollection) {
             return LazyCollection::make(WooCommerce::all($this->endpoint, $options));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::all($this->endpoint, $options));
+            return collect(WooCommerce::all($site, $this->endpoint, $options));
         }
 
         return WooCommerce::all($this->endpoint, $options);
