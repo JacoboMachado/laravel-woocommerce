@@ -47,14 +47,14 @@ trait QueryBuilderTrait
     protected function all($site, $options = [])
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::all($this->endpoint, $options));
+            return LazyCollection::make(WooCommerce::all($site, $this->endpoint, $options));
         }
 
         if ($this->isCollection) {
             return collect(WooCommerce::all($site, $this->endpoint, $options));
         }
 
-        return WooCommerce::all($this->endpoint, $options);
+        return WooCommerce::all($site, $this->endpoint, $options);
     }
 
     /**
@@ -65,17 +65,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function find($id, $options = [])
+    protected function find($site, $id, $options = [])
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::find("{$this->endpoint}/{$id}", $options));
+            return LazyCollection::make(WooCommerce::find($site, "{$this->endpoint}/{$id}", $options));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::find("{$this->endpoint}/{$id}", $options));
+            return collect(WooCommerce::find($site, "{$this->endpoint}/{$id}", $options));
         }
 
-        return WooCommerce::find("{$this->endpoint}/{$id}", $options);
+        return WooCommerce::find($site, "{$this->endpoint}/{$id}", $options);
     }
 
     /**
@@ -85,17 +85,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function create($data)
+    protected function create($site, $data)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::create($this->endpoint, $data));
+            return LazyCollection::make(WooCommerce::create($site, $this->endpoint, $data));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::create($this->endpoint, $data));
+            return collect(WooCommerce::create($site, $this->endpoint, $data));
         }
 
-        return WooCommerce::create($this->endpoint, $data);
+        return WooCommerce::create($site, $this->endpoint, $data);
     }
 
     /**
@@ -106,17 +106,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function update($id, $data)
+    protected function update($site, $id, $data)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::update("{$this->endpoint}/{$id}", $data));
+            return LazyCollection::make(WooCommerce::update($site, "{$this->endpoint}/{$id}", $data));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::update("{$this->endpoint}/{$id}", $data));
+            return collect(WooCommerce::update($site, "{$this->endpoint}/{$id}", $data));
         }
 
-        return WooCommerce::update("{$this->endpoint}/{$id}", $data);
+        return WooCommerce::update($site, "{$this->endpoint}/{$id}", $data);
     }
 
     /**
@@ -127,17 +127,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function delete($id, $options = [])
+    protected function delete($site, $id, $options = [])
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::delete("{$this->endpoint}/{$id}", $options));
+            return LazyCollection::make(WooCommerce::delete($site, "{$this->endpoint}/{$id}", $options));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::delete("{$this->endpoint}/{$id}", $options));
+            return collect(WooCommerce::delete($site, "{$this->endpoint}/{$id}", $options));
         }
 
-        return WooCommerce::delete("{$this->endpoint}/{$id}", $options);
+        return WooCommerce::delete($site, "{$this->endpoint}/{$id}", $options);
     }
 
     /**
@@ -147,17 +147,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function batch($data)
+    protected function batch($site, $data)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::create("{$this->endpoint}/batch", $data));
+            return LazyCollection::make(WooCommerce::create($site, "{$this->endpoint}/batch", $data));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::create("{$this->endpoint}/batch", $data));
+            return collect(WooCommerce::create($site, "{$this->endpoint}/batch", $data));
         }
 
-        return WooCommerce::create("{$this->endpoint}/batch", $data);
+        return WooCommerce::create($site, "{$this->endpoint}/batch", $data);
     }
 
     /**
@@ -165,17 +165,17 @@ trait QueryBuilderTrait
      *
      * @return array
      */
-    protected function get()
+    protected function get($site)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make(WooCommerce::all($this->endpoint, $this->options));
+            return LazyCollection::make(WooCommerce::all($site, $this->endpoint, $this->options));
         }
 
         if ($this->isCollection) {
-            return collect(WooCommerce::all($this->endpoint, $this->options));
+            return collect(WooCommerce::all($site, $this->endpoint, $this->options));
         }
 
-        return WooCommerce::all($this->endpoint, $this->options);
+        return WooCommerce::all($site, $this->endpoint, $this->options);
     }
 
     /**
@@ -183,17 +183,17 @@ trait QueryBuilderTrait
      *
      * @return object
      */
-    protected function first()
+    protected function first($site)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make($this->get()[0] ?? new \stdClass());
+            return LazyCollection::make($site, $this->get()[0] ?? new \stdClass());
         }
 
         if ($this->isCollection) {
-            return collect($this->get()[0] ?? new \stdClass());
+            return collect($site, $this->get()[0] ?? new \stdClass());
         }
 
-        return collect($this->get()[0] ?? new \stdClass());
+        return collect($site, $this->get()[0] ?? new \stdClass());
     }
 
     /**
@@ -314,7 +314,7 @@ trait QueryBuilderTrait
      *
      * @return array
      */
-    protected function paginate($per_page = 10, $current_page = 1, $options = [])
+    protected function paginate($site, $per_page = 10, $current_page = 1, $options = [])
     {
         try {
             $this->options['per_page'] = (int) $per_page;
@@ -328,11 +328,11 @@ trait QueryBuilderTrait
             }
 
             $data = $this->get();
-            $totalResults = WooCommerce::countResults();
-            $totalPages = WooCommerce::countPages();
-            $currentPage = WooCommerce::current();
-            $previousPage = WooCommerce::previous();
-            $nextPage = WooCommerce::next();
+            $totalResults = WooCommerce::countResults($site);
+            $totalPages = WooCommerce::countPages($site);
+            $currentPage = WooCommerce::current($site);
+            $previousPage = WooCommerce::previous($site);
+            $nextPage = WooCommerce::next($site);
 
             $pagination = [
                 'total_results' => $totalResults,
@@ -368,10 +368,10 @@ trait QueryBuilderTrait
      *
      * @return int
      */
-    protected function count()
+    protected function count($site)
     {
         try {
-            $results = WooCommerce::all($this->endpoint, $this->options);
+            $results = WooCommerce::all($site, $this->endpoint, $this->options);
             $totalResults = WooCommerce::countResults();
 
             return $totalResults;
@@ -385,9 +385,9 @@ trait QueryBuilderTrait
      *
      * @return array
      */
-    public function save()
+    public function save($site)
     {
-        $this->results = WooCommerce::create($this->endpoint, $this->properties);
+        $this->results = WooCommerce::create($site, $this->endpoint, $this->properties);
 
         if ($this->isLazyCollection) {
             return LazyCollection::make($this->results);
