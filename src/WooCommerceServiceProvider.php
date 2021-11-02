@@ -22,7 +22,7 @@ class WooCommerceServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__.'/../database/migrations/create_sites_table.php.stub' => database_path("migrations/{$timestamp}_create_sites_table.php"),
-            ], 'migrations');
+            ], 'sites-migration');
         }
     }
 
