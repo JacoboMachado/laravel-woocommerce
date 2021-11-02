@@ -11,8 +11,8 @@ class CreateSitesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('url')->unique();
-            $table->string('key');
-            $table->string('secret');
+            $table->string('key', 950);
+            $table->string('secret', 950);
 
         });
     }
