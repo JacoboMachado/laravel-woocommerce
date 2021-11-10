@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use \Sagalbot\Encryptable\Encryptable;
 
 
-class Sites extends Model
+class Site extends Model
 {
     use Encryptable;
 
