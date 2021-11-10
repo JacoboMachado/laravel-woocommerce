@@ -53,7 +53,7 @@
                 "ShippingMethod": "Codexshaper\\WooCommerce\\Models\\ShippingMethod",
                 "ShippingZone": "Codexshaper\\WooCommerce\\Models\\ShippingZone",
                 "ShippingZoneMethod": "Codexshaper\\WooCommerce\\Models\\ShippingZoneMethod",
-                "Sites": "Codexshaper\\WooCommerce\\Models\\Sites",
+                "Site": "Codexshaper\\WooCommerce\\Models\\Site",
                 "System": "Codexshaper\\WooCommerce\\Models\\System",
                 "Tag": "Codexshaper\\WooCommerce\\Models\\Tag",
                 "Tax": "Codexshaper\\WooCommerce\\Models\\Tax",
