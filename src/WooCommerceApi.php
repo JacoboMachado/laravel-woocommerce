@@ -3,7 +3,7 @@
 namespace Codexshaper\WooCommerce;
 
 use Automattic\WooCommerce\Client;
-use Codexshaper\WooCommerce\Models\Sites;
+use Codexshaper\WooCommerce\Models\Site;
 use Codexshaper\WooCommerce\Traits\WooCommerceTrait;
 
 class WooCommerceApi
@@ -21,7 +21,7 @@ class WooCommerceApi
     protected $headers = [];
 
     /**
-     * @var Models\Sites
+     * @var Models\Site
      */
     protected $site;
 
@@ -30,7 +30,7 @@ class WooCommerceApi
      *
      * @return void
      */
-    public function __construct(Sites $site)
+    public function __construct(Site $site)
     {
         $this->site = $site;
         try {
