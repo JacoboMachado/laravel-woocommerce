@@ -186,14 +186,14 @@ trait QueryBuilderTrait
     protected function first($site)
     {
         if ($this->isLazyCollection) {
-            return LazyCollection::make($site, $this->get()[0] ?? new \stdClass());
+            return LazyCollection::make($this->get($site)[0] ?? new \stdClass());
         }
 
         if ($this->isCollection) {
-            return collect($site, $this->get()[0] ?? new \stdClass());
+            return collect($this->get($site)[0] ?? new \stdClass());
         }
 
-        return collect($site, $this->get()[0] ?? new \stdClass());
+        return collect($this->get($site)[0] ?? new \stdClass());
     }
 
     /**
