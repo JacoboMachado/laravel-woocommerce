@@ -327,7 +327,7 @@ trait QueryBuilderTrait
                 $this->options[$option] = $value;
             }
 
-            $data = $this->get();
+            $data = $this->get($sitio);
             $totalResults = WooCommerce::countResults($site);
             $totalPages = WooCommerce::countPages($site);
             $currentPage = WooCommerce::current($site);
